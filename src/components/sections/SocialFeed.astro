@@ -1,7 +1,11 @@
 ---
 // ZERO-JS EXCEPTION: third-party Instagram widget (Curator.io | Elfsight | embed.js)
 // Account: @ies_gsr | Hashtag filter: #demeteria (strict — configure in provider panel)
-import { instagramPosts, socialFeedConfig } from '../../data/project-content';
+import {
+  featuredInstagramPosts,
+  instagramPosts,
+  socialFeedConfig,
+} from '../../data/project-content';
 
 const WIDGET_ID = import.meta.env.PUBLIC_SOCIAL_WIDGET_ID ?? '';
 const WIDGET_PROVIDER = import.meta.env.PUBLIC_SOCIAL_WIDGET_PROVIDER ?? 'curator';
@@ -21,6 +25,7 @@ const curatedPosts = [
 const { instagramUrl, hashtag } = socialFeedConfig;
 const hasWidget = Boolean(WIDGET_ID);
 const hasNativeEmbeds = curatedPosts.length > 0;
+const hasFeaturedPosts = featuredInstagramPosts.length > 0;
 ---
 
 <section
@@ -97,24 +102,58 @@ const hasNativeEmbeds = curatedPosts.length > 0;
           </blockquote>
         ))}
       </div>
+    ) : hasFeaturedPosts ? (
+      <div class="grid grid-cols-1 gap-6 p-4 sm:p-6 max-w-2xl mx-auto" role="list">
+        {featuredInstagramPosts.map((post) => (
+          <article
+            role="listitem"
+            class="rounded-xl border border-gray-200/80 bg-mist/30 overflow-hidden shadow-sm"
+          >
+            <figure>
+              <a
+                href={post.postUrl}
+                rel="noopener noreferrer"
+                target="_blank"
+                class="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hydro-teal focus-visible:ring-offset-2"
+              >
+                <img
+                  src={post.image}
+                  alt={post.alt}
+                  width={1080}
+                  height={1350}
+                  class="w-full h-auto object-contain bg-surface"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <figcaption class="px-4 sm:px-6 py-4 space-y-3">
+                <p class="text-xs font-medium uppercase tracking-wider text-hydro-teal">
+                  @{socialFeedConfig.account} · {post.date}
+                </p>
+                <p class="text-sm text-muted leading-relaxed">
+                  {post.caption}
+                </p>
+                <p class="text-sm text-tech-slate">
+                  {post.hashtags.join(' ')}
+                </p>
+                <a
+                  href={post.postUrl}
+                  class="inline-flex text-sm font-medium text-hydro-teal hover:underline"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Ver en Instagram →
+                </a>
+              </figcaption>
+            </figure>
+          </article>
+        ))}
+      </div>
     ) : (
       <div class="p-6 sm:p-8 text-center max-w-xl mx-auto">
         <p class="text-muted leading-relaxed">
-          Para mostrar el feed aquí, elige una opción:
+          No hay publicaciones configuradas todavía.
         </p>
-        <ul class="mt-4 text-sm text-muted text-left space-y-2 list-disc list-inside">
-          <li>
-            <strong class="text-tech-slate">Rápido:</strong> crea un archivo{' '}
-            <code class="bg-mist px-1 rounded text-xs">.env</code> con{' '}
-            <code class="bg-mist px-1 rounded text-xs">PUBLIC_INSTAGRAM_POST_URL=https://www.instagram.com/p/…</code>{' '}
-            (enlace de la publicación del 20 de mayo u otras con #{hashtag}).
-          </li>
-          <li>
-            <strong class="text-tech-slate">Automático:</strong> configura{' '}
-            <code class="bg-mist px-1 rounded text-xs">PUBLIC_SOCIAL_WIDGET_ID</code>{' '}
-            con un widget Curator.io o Elfsight filtrado por @{socialFeedConfig.account} y #{hashtag}.
-          </li>
-        </ul>
         <a
           href={instagramUrl}
           class="inline-flex mt-6 text-hydro-teal font-medium hover:underline"
