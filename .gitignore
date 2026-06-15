@@ -19,6 +19,10 @@ pnpm-debug.log*
 !.env.example
 .env.production
 
+# lighthouse reports (local / production audits — no commitear)
+lighthouse-report.json
+lighthouse-report-production.json
+
 # macOS-specific files
 .DS_Store
 Thumbs.db

@@ -1,0 +1,9 @@
+# DemeterIA landing — Netlify CI/CD (Issue #14)
+# Contrato: specs/014-netlify-deploy/contracts/netlify-build-config.md
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

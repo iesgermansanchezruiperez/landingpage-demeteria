@@ -5,8 +5,8 @@ alwaysApply: true
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan:
-`specs/013-info-social/plan.md`
+`specs/014-netlify-deploy/plan.md`
 
-Active feature: Issue #13 — Secciones informativas y Widget de Instagram (rama `feature/013-info-social`).
-Quickstart validation: `specs/013-info-social/quickstart.md`
+Active feature: Issue #14 — Despliegue en Producción (Netlify) y Auditoría Lighthouse (rama `feature/014-netlify-deploy`).
+Quickstart validation: `specs/014-netlify-deploy/quickstart.md`
 <!-- SPECKIT END -->
