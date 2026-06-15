@@ -1,0 +1,96 @@
+---
+// ZERO-JS EXCEPTION: third-party Instagram widget (Curator.io | Elfsight)
+// Account: @ies_gsr | Hashtag filter: #demeteria (strict — configure in provider panel)
+import { socialFeedConfig } from '../../data/project-content';
+
+const WIDGET_ID = import.meta.env.PUBLIC_SOCIAL_WIDGET_ID ?? '';
+const WIDGET_PROVIDER = import.meta.env.PUBLIC_SOCIAL_WIDGET_PROVIDER ?? 'curator';
+const { instagramUrl, hashtag } = socialFeedConfig;
+---
+
+<section
+  id="redes-sociales"
+  class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16"
+  aria-labelledby="titulo-social"
+>
+  <header class="mb-8">
+    <h2 id="titulo-social" class="text-3xl sm:text-4xl font-bold text-tech-slate">
+      DemeterIA en Instagram
+    </h2>
+    <p class="mt-3 text-muted">
+      Publicaciones de{' '}
+      <a
+        href={instagramUrl}
+        class="text-hydro-teal hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hydro-teal focus-visible:ring-offset-2 rounded-sm"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        @{socialFeedConfig.account}
+      </a>{' '}
+      con{' '}
+      <span class="font-medium text-tech-slate">#{hashtag}</span>
+    </p>
+  </header>
+
+  <div
+    id="social-feed-widget"
+    class="min-h-[200px] rounded-xl bg-surface border border-gray-200/80 overflow-hidden"
+    aria-label="Publicaciones de Instagram del proyecto DemeterIA"
+    aria-live="polite"
+  >
+    {WIDGET_ID ? (
+      WIDGET_PROVIDER === 'elfsight' ? (
+        <>
+          {/* ZERO-JS EXCEPTION: Elfsight embed — filter @ies_gsr + #demeteria in panel */}
+          <div class={`elfsight-app-${WIDGET_ID}`} />
+          <script is:inline src="https://elfsightcdn.com/platform.js" async />
+        </>
+      ) : (
+        <>
+          {/* ZERO-JS EXCEPTION: Curator.io embed — filter @ies_gsr + #demeteria in panel */}
+          <div id="curator-feed-default-feed-container" />
+          <script
+            is:inline
+            define:vars={{ feedId: WIDGET_ID }}
+          >
+            (function () {
+              var i, e, d = document, s = 'script';
+              i = d.createElement('script');
+              i.async = 1;
+              i.src = 'https://cdn.curator.io/published/' + feedId + '.js';
+              e = d.getElementsByTagName('script')[0];
+              e.parentNode.insertBefore(i, e);
+            })();
+          </script>
+        </>
+      )
+    ) : (
+      <p class="p-8 text-center text-muted">
+        Feed en configuración. Configura{' '}
+        <code class="text-sm bg-mist px-1 rounded">PUBLIC_SOCIAL_WIDGET_ID</code>{' '}
+        con un widget de @ies_gsr filtrado por #{hashtag}.
+      </p>
+    )}
+  </div>
+
+  <p class="mt-4 text-sm text-muted">
+    <a
+      href={instagramUrl}
+      class="text-hydro-teal hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hydro-teal focus-visible:ring-offset-2 rounded-sm"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      @{socialFeedConfig.account} en Instagram
+    </a>
+    {' '}— publicaciones con <span class="font-medium text-tech-slate">#{hashtag}</span>
+  </p>
+
+  <noscript>
+    <p class="mt-4 text-sm text-muted">
+      <a href={instagramUrl} rel="noopener noreferrer" target="_blank">
+        Ver @{socialFeedConfig.account} en Instagram
+      </a>
+      {' '}— busca #{hashtag}
+    </p>
+  </noscript>
+</section>
