@@ -55,18 +55,5 @@ export const socialFeedConfig = {
   instagramUrl: 'https://www.instagram.com/ies_gsr/',
 } as const;
 
-/** Publicaciones @ies_gsr con #demeteria — añadir permalink (⋯ → Copiar enlace en Instagram). */
+/** Enlaces a publicaciones concretas (embed nativo Instagram). Opcional si usas widget. */
 export const instagramPosts: { permalink: string; label?: string }[] = [];
-
-/** Publicaciones destacadas (imagen estática) cuando no hay widget ni embed URL. */
-export const featuredInstagramPosts = [
-  {
-    date: '20 mayo 2026',
-    image: '/social/demeteria-instagram-2026-05-20.png',
-    alt: 'Infografía del proyecto DEMETERIA publicada en Instagram por @ies_gsr — CYL INNOVA FP',
-    caption:
-      'El proyecto DEMETERIA: «Agricultura de precisión e inteligente en sistemas hidropónicos sostenibles para la inclusión social» ha sido seleccionado dentro del programa CYL INNOVA FP de la Junta de Castilla y León.',
-    hashtags: ['#DEMETERIA', '#CyLInnovaFP', '#FP', '#InnovaciónEducativa', '#AgriculturaInteligente'],
-    postUrl: 'https://www.instagram.com/ies_gsr/',
-  },
-] as const;
