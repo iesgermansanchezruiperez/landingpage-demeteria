@@ -1,11 +1,26 @@
 ---
-// ZERO-JS EXCEPTION: third-party Instagram widget (Curator.io | Elfsight)
+// ZERO-JS EXCEPTION: third-party Instagram widget (Curator.io | Elfsight | embed.js)
 // Account: @ies_gsr | Hashtag filter: #demeteria (strict — configure in provider panel)
-import { socialFeedConfig } from '../../data/project-content';
+import { instagramPosts, socialFeedConfig } from '../../data/project-content';
 
 const WIDGET_ID = import.meta.env.PUBLIC_SOCIAL_WIDGET_ID ?? '';
 const WIDGET_PROVIDER = import.meta.env.PUBLIC_SOCIAL_WIDGET_PROVIDER ?? 'curator';
+
+const envPostUrls = [
+  import.meta.env.PUBLIC_INSTAGRAM_POST_URL,
+  ...(import.meta.env.PUBLIC_INSTAGRAM_POSTS?.split(',').map((s: string) => s.trim()) ?? []),
+].filter(Boolean) as string[];
+
+const curatedPosts = [
+  ...instagramPosts,
+  ...envPostUrls.map((permalink) => ({ permalink })),
+].filter(
+  (post, index, arr) => arr.findIndex((p) => p.permalink === post.permalink) === index,
+);
+
 const { instagramUrl, hashtag } = socialFeedConfig;
+const hasWidget = Boolean(WIDGET_ID);
+const hasNativeEmbeds = curatedPosts.length > 0;
 ---
 
 <section
@@ -38,7 +53,7 @@ const { instagramUrl, hashtag } = socialFeedConfig;
     aria-label="Publicaciones de Instagram del proyecto DemeterIA"
     aria-live="polite"
   >
-    {WIDGET_ID ? (
+    {hasWidget ? (
       WIDGET_PROVIDER === 'elfsight' ? (
         <>
           {/* ZERO-JS EXCEPTION: Elfsight embed — filter @ies_gsr + #demeteria in panel */}
@@ -49,10 +64,7 @@ const { instagramUrl, hashtag } = socialFeedConfig;
         <>
           {/* ZERO-JS EXCEPTION: Curator.io embed — filter @ies_gsr + #demeteria in panel */}
           <div id="curator-feed-default-feed-container" />
-          <script
-            is:inline
-            define:vars={{ feedId: WIDGET_ID }}
-          >
+          <script is:inline define:vars={{ feedId: WIDGET_ID }}>
             (function () {
               var i, e, d = document, s = 'script';
               i = d.createElement('script');
@@ -64,14 +76,60 @@ const { instagramUrl, hashtag } = socialFeedConfig;
           </script>
         </>
       )
+    ) : hasNativeEmbeds ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 sm:p-6 justify-items-center">
+        {curatedPosts.map((post) => (
+          <blockquote
+            class="instagram-media w-full max-w-[540px]"
+            data-instgrm-captioned
+            data-instgrm-permalink={`${post.permalink}?utm_source=ig_embed&utm_campaign=loading`}
+            data-instgrm-version="14"
+            style="background:#FFF; border:0; border-radius:12px; margin:0; max-width:540px; min-width:326px; padding:0; width:100%;"
+          >
+            <a
+              href={post.permalink}
+              rel="noopener noreferrer"
+              target="_blank"
+              class="block p-8 text-center text-muted hover:text-hydro-teal"
+            >
+              {post.label ?? 'Ver publicación en Instagram'}
+            </a>
+          </blockquote>
+        ))}
+      </div>
     ) : (
-      <p class="p-8 text-center text-muted">
-        Feed en configuración. Configura{' '}
-        <code class="text-sm bg-mist px-1 rounded">PUBLIC_SOCIAL_WIDGET_ID</code>{' '}
-        con un widget de @ies_gsr filtrado por #{hashtag}.
-      </p>
+      <div class="p-6 sm:p-8 text-center max-w-xl mx-auto">
+        <p class="text-muted leading-relaxed">
+          Para mostrar el feed aquí, elige una opción:
+        </p>
+        <ul class="mt-4 text-sm text-muted text-left space-y-2 list-disc list-inside">
+          <li>
+            <strong class="text-tech-slate">Rápido:</strong> crea un archivo{' '}
+            <code class="bg-mist px-1 rounded text-xs">.env</code> con{' '}
+            <code class="bg-mist px-1 rounded text-xs">PUBLIC_INSTAGRAM_POST_URL=https://www.instagram.com/p/…</code>{' '}
+            (enlace de la publicación del 20 de mayo u otras con #{hashtag}).
+          </li>
+          <li>
+            <strong class="text-tech-slate">Automático:</strong> configura{' '}
+            <code class="bg-mist px-1 rounded text-xs">PUBLIC_SOCIAL_WIDGET_ID</code>{' '}
+            con un widget Curator.io o Elfsight filtrado por @{socialFeedConfig.account} y #{hashtag}.
+          </li>
+        </ul>
+        <a
+          href={instagramUrl}
+          class="inline-flex mt-6 text-hydro-teal font-medium hover:underline"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Ver publicaciones en @ies_gsr →
+        </a>
+      </div>
     )}
   </div>
+
+  {(hasWidget || hasNativeEmbeds) && (
+    <script is:inline async src="https://www.instagram.com/embed.js" />
+  )}
 
   <p class="mt-4 text-sm text-muted">
     <a

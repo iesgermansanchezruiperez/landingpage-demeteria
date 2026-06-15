@@ -54,3 +54,8 @@ export const socialFeedConfig = {
   hashtag: 'demeteria',
   instagramUrl: 'https://www.instagram.com/ies_gsr/',
 } as const;
+
+/** Publicaciones @ies_gsr con #demeteria — añadir permalink (⋯ → Copiar enlace en Instagram). */
+export const instagramPosts: { permalink: string; label?: string }[] = [
+  // Ejemplo: { permalink: 'https://www.instagram.com/p/SHORTCODE/', label: '20 mayo 2026 — DEMETERIA' },
+];
