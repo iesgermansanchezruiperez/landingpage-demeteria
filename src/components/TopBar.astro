@@ -34,58 +34,61 @@ const logos = [
   aria-label="Financiación del proyecto CYL INNOVA FP"
   class="bg-surface border-b border-gray-200 overflow-x-hidden"
 >
-  <div class="mx-auto max-w-6xl px-2 sm:px-4 py-1 sm:py-1.5">
-    <!-- Móvil / tablet: grid 4 columnas -->
+  <div class="mx-auto max-w-6xl px-2 sm:px-4 py-1 sm:py-1.5 md:py-3">
+    <!-- Móvil / tablet -->
+    <div
+      class="grid grid-cols-4 gap-1 sm:gap-1.5 items-center justify-items-center md:hidden"
+      role="list"
+      aria-label="Logotipos institucionales"
+    >
+      {logos.map((logo) => (
+        <div
+          class="w-full max-w-16 h-6 sm:h-10 flex items-center justify-center shrink-0"
+          role="listitem"
+        >
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            width={logo.width}
+            height={logo.height}
+            class="h-full w-auto max-w-full object-contain"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      ))}
+    </div>
+
+    <!-- Escritorio -->
+    <div
+      class="hidden md:flex md:items-center md:justify-center md:gap-8"
+      role="list"
+      aria-label="Logotipos institucionales"
+    >
+      {logos.map((logo) => (
+        <div
+          class="flex h-14 lg:h-16 shrink-0 items-center justify-center"
+          role="listitem"
+        >
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            width={logo.width}
+            height={logo.height}
+            class="h-full w-auto object-contain"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      ))}
+    </div>
+
     <div class="md:hidden">
-      <div
-        class="grid grid-cols-4 gap-1 sm:gap-1.5 items-center justify-items-center"
-        role="list"
-        aria-label="Logotipos institucionales"
-      >
-        {logos.map((logo) => (
-          <div
-            class="w-full max-w-16 h-6 sm:h-8 flex items-center justify-center shrink-0"
-            role="listitem"
-          >
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              width={logo.width}
-              height={logo.height}
-              class="h-full w-auto max-w-full object-contain"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-        ))}
-      </div>
       <p class="mt-0.5 text-center text-[10px] sm:text-xs text-muted leading-tight">
         Cofinanciado por la Unión Europea
       </p>
       <p class="hidden sm:block mt-1 text-center text-[10px] text-muted/80 leading-snug">
         {legalMentionShort}
-      </p>
-    </div>
-
-    <!-- Desktop: flex horizontal -->
-    <div class="hidden md:flex md:items-center md:justify-between md:gap-4">
-      <div class="flex items-center gap-3" role="list" aria-label="Logotipos institucionales">
-        {logos.map((logo) => (
-          <div class="h-10 max-w-24 flex items-center justify-center shrink-0" role="listitem">
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              width={logo.width}
-              height={logo.height}
-              class="h-full w-auto max-w-full object-contain"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-        ))}
-      </div>
-      <p class="text-xs text-muted max-w-xl text-right leading-snug">
-        Cofinanciado por la Unión Europea
       </p>
     </div>
   </div>
