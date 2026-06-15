@@ -1,9 +1,17 @@
 ---
 const year = new Date().getFullYear();
+
+const legalMentionFull =
+  'Actuación financiada por el Ministerio de Educación, Formación Profesional y Deportes y cofinanciada por la Unión Europea (FSE+), línea de actuación 6.4 «Implementación de proyectos en Formación Profesional» (medidas 3.e.10, 3.e.11 y 3.e.14), incluida en la Línea principal de actuación 6- Impulso y Calidad de la Formación Profesional, en el marco financiero plurianual 2021-2027, dentro del Programa de Empleo, Educación, Formación y Economía Social (ÉFESO).';
 ---
 
 <footer class="bg-tech-slate text-mist mt-auto">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8">
+    <section aria-label="Financiación del proyecto" class="mb-4 pb-4 border-b border-mist/20">
+      <p class="text-[10px] sm:text-xs text-mist/70 leading-relaxed">
+        {legalMentionFull}
+      </p>
+    </section>
     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <p class="text-sm">
         <span class="font-semibold text-surface">DemeterIA</span>
