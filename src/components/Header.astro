@@ -1,0 +1,33 @@
+---
+const navItems = [
+  { href: '#contenido-principal', label: 'Inicio' },
+];
+---
+
+<header class="bg-surface border-b border-demeter-green/20 shadow-sm">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <a
+        href="/"
+        class="text-xl font-semibold text-demeter-green hover:text-hydro-teal transition-colors"
+        aria-label="DemeterIA — Inicio"
+      >
+        DemeterIA
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="flex gap-6" role="list">
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-tech-slate hover:text-hydro-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hydro-teal focus-visible:ring-offset-2 rounded-sm px-1 py-0.5"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

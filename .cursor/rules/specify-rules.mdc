@@ -1,0 +1,12 @@
+---
+alwaysApply: true
+---
+
+<!-- SPECKIT START -->
+For additional context about technologies to be used, project structure,
+shell commands, and other important information, read the current plan:
+`specs/001-astro-tailwind-init/plan.md`
+
+Active feature: Issue #11 — Astro + Tailwind bootstrap (Zero-JS, HTML5 semantics).
+Quickstart validation: `specs/001-astro-tailwind-init/quickstart.md`
+<!-- SPECKIT END -->
