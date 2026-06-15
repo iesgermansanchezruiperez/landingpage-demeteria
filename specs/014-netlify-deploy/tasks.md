@@ -128,7 +128,7 @@ description: "Task list for Issue #14 — Despliegue Netlify y Auditoría Lighth
 - [ ] T027 [P] Completar checklist `specs/014-netlify-deploy/checklists/requirements.md` (CHK-001 a CHK-019)
 - [ ] T028 [P] Ejecutar `specs/014-netlify-deploy/quickstart.md` completo (§1–§7) y marcar ítems verificados
 - [ ] T029 Verificar push a `main` dispara redeploy automático Netlify (CI/CD) per `spec.md` FR-002
-- [ ] T030 Abrir Pull Request `feature/014-netlify-deploy` → `main` (Issue #14); **no push directo a main** sin PR
+- [x] T030 Abrir Pull Request `feature/014-netlify-deploy` → `main` (Issue #14); **no push directo a main** sin PR
 - [ ] T031 Tras merge: confirmar redeploy producción y re-ejecutar Lighthouse si `astro.config.mjs` `site` cambió en PR
 - [ ] T032 Cerrar Issue #14 en GitHub con URL producción y puntuaciones Lighthouse en comentario de cierre
 
