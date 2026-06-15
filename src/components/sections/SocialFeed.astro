@@ -1,6 +1,6 @@
 ---
 // ZERO-JS EXCEPTION: third-party Instagram widget (Elfsight | Curator.io | SnapWidget)
-// Account: @ies_gsr | Hashtag filter: #demeteria (configure in provider panel)
+// Accounts: @ies_gsr + @elalonsodemadrigal | Hashtag filter: #demeteria (configure in provider panel)
 import { instagramPosts, socialFeedConfig } from '../../data/project-content';
 
 const WIDGET_ID = import.meta.env.PUBLIC_SOCIAL_WIDGET_ID ?? '';
@@ -18,31 +18,34 @@ const curatedPosts = [
   (post, index, arr) => arr.findIndex((p) => p.permalink === post.permalink) === index,
 );
 
-const { instagramUrl, hashtag } = socialFeedConfig;
+const { accounts, hashtag } = socialFeedConfig;
+const linkClass =
+  'text-demeter-green font-medium underline underline-offset-2 decoration-demeter-green/40 hover:decoration-demeter-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hydro-teal focus-visible:ring-offset-2 rounded-sm';
 const hasWidget = Boolean(WIDGET_ID);
 const hasNativeEmbeds = curatedPosts.length > 0;
 ---
 
 <section
   id="redes-sociales"
-  class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16"
+  class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10"
   aria-labelledby="titulo-social"
 >
-  <header class="mb-8">
-    <h2 id="titulo-social" class="text-3xl sm:text-4xl font-bold text-tech-slate">
+  <header class="mb-6">
+    <h2 id="titulo-social" class="text-3xl sm:text-4xl font-bold text-tech-slate text-balance">
       DemeterIA en Instagram
     </h2>
-    <p class="mt-3 text-muted">
+    <p class="mt-3 text-muted text-pretty">
+      Proyecto conjunto entre el IES Germán Sánchez Ruipérez y el IES Alonso de Madrigal.
       Publicaciones de{' '}
-      <a
-        href={instagramUrl}
-        class="text-hydro-teal hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hydro-teal focus-visible:ring-offset-2 rounded-sm"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        @{socialFeedConfig.account}
-      </a>{' '}
-      con{' '}
+      {accounts.map((account, index) => (
+        <>
+          {index > 0 && (index === accounts.length - 1 ? ' y ' : ', ')}
+          <a href={account.url} class={linkClass} rel="noopener noreferrer" target="_blank">
+            @{account.handle}
+          </a>
+        </>
+      ))}
+      {' '}con{' '}
       <span class="font-medium text-tech-slate">#{hashtag}</span>
     </p>
   </header>
@@ -84,7 +87,7 @@ const hasNativeEmbeds = curatedPosts.length > 0;
       ) : (
         <>
           {/* ZERO-JS EXCEPTION: Elfsight (default) — filter @ies_gsr + #demeteria in panel */}
-          <div class={`elfsight-app-${WIDGET_ID}`} />
+          <div class={`elfsight-app-${WIDGET_ID}`} data-elfsight-app-lazy />
           <script is:inline src="https://elfsightcdn.com/platform.js" async />
         </>
       )
@@ -102,7 +105,7 @@ const hasNativeEmbeds = curatedPosts.length > 0;
               href={post.permalink}
               rel="noopener noreferrer"
               target="_blank"
-              class="block p-8 text-center text-muted hover:text-hydro-teal"
+              class="block p-8 text-center text-muted hover:text-hydro-teal-dark motion-safe:transition-colors"
             >
               {post.label ?? 'Ver publicación en Instagram'}
             </a>
@@ -110,29 +113,23 @@ const hasNativeEmbeds = curatedPosts.length > 0;
         ))}
       </div>
     ) : (
-      <div class="p-6 sm:p-10 max-w-lg mx-auto">
-        <p class="text-center text-muted leading-relaxed">
-          El feed dinámico de Instagram requiere configurar un widget gratuito.
-          Sigue la guía en <code class="text-xs bg-mist px-1 rounded">docs/instagram-feed-setup.md</code>.
+      <div class="p-8 sm:p-10 text-center">
+        <p class="text-muted leading-relaxed max-w-lg mx-auto text-pretty">
+          Sigue el avance del proyecto en Instagram. Publicamos novedades con el hashtag{' '}
+          <span class="font-medium text-tech-slate">#{hashtag}</span>.
         </p>
-        <ol class="mt-6 text-sm text-muted space-y-2 list-decimal list-inside">
-          <li>Crea un widget en <a href="https://elfsight.com/instagram-feed-instashow/" class="text-hydro-teal hover:underline" rel="noopener noreferrer" target="_blank">Elfsight</a> (plan gratuito).</li>
-          <li>Conecta la cuenta <strong class="text-tech-slate">@ies_gsr</strong>.</li>
-          <li>Filtra por hashtag <strong class="text-tech-slate">#demeteria</strong>.</li>
-          <li>Copia el ID del widget y créalo en <code class="text-xs bg-mist px-1 rounded">.env</code>:</li>
-        </ol>
-        <pre class="mt-3 p-3 rounded-lg bg-mist text-xs text-tech-slate overflow-x-auto"><code>PUBLIC_SOCIAL_WIDGET_ID=tu-widget-id
-PUBLIC_SOCIAL_WIDGET_PROVIDER=elfsight</code></pre>
-        <p class="mt-4 text-center">
-          <a
-            href={instagramUrl}
-            class="text-hydro-teal font-medium hover:underline"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Mientras tanto, ver @ies_gsr en Instagram →
-          </a>
-        </p>
+        <div class="mt-6 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
+          {accounts.map((account) => (
+            <a
+              href={account.url}
+              class="inline-flex items-center justify-center rounded-lg bg-demeter-green px-5 py-2.5 text-sm font-semibold text-white hover:bg-demeter-green/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-demeter-green focus-visible:ring-offset-2 motion-safe:transition-colors"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              @{account.handle}
+            </a>
+          ))}
+        </div>
       </div>
     )}
   </div>
@@ -141,23 +138,30 @@ PUBLIC_SOCIAL_WIDGET_PROVIDER=elfsight</code></pre>
     <script is:inline async src="https://www.instagram.com/embed.js" />
   )}
 
-  <p class="mt-4 text-sm text-muted">
-    <a
-      href={instagramUrl}
-      class="text-hydro-teal hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hydro-teal focus-visible:ring-offset-2 rounded-sm"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      @{socialFeedConfig.account} en Instagram
-    </a>
-    {' '}— publicaciones con <span class="font-medium text-tech-slate">#{hashtag}</span>
-  </p>
+  <ul class="mt-4 flex flex-col sm:flex-row sm:flex-wrap gap-x-6 gap-y-2 text-sm text-muted" role="list">
+    {accounts.map((account) => (
+      <li>
+        <a href={account.url} class={linkClass} rel="noopener noreferrer" target="_blank">
+          @{account.handle}
+        </a>
+        <span class="text-muted"> — {account.school}</span>
+      </li>
+    ))}
+    <li>
+      <span class="font-medium text-tech-slate">#{hashtag}</span>
+    </li>
+  </ul>
 
   <noscript>
     <p class="mt-4 text-sm text-muted">
-      <a href={instagramUrl} rel="noopener noreferrer" target="_blank">
-        Ver @{socialFeedConfig.account} en Instagram
-      </a>
+      {accounts.map((account, index) => (
+        <>
+          {index > 0 && ' · '}
+          <a href={account.url} rel="noopener noreferrer" target="_blank">
+            @{account.handle}
+          </a>
+        </>
+      ))}
       {' '}— busca #{hashtag}
     </p>
   </noscript>

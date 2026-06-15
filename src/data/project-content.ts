@@ -10,13 +10,13 @@ export const pillars = [
   },
   {
     title: 'IoT + Inteligencia Artificial',
-    accentClass: 'text-hydro-teal',
+    accentClass: 'text-hydro-teal-dark',
     description:
       'Sensores en Raspberry Pi envían datos a Firebase para monitorización en tiempo real. Modelos de IA analizan temperatura y humedad para optimizar el cultivo de forma automática.',
   },
   {
     title: 'Inclusión social',
-    accentClass: 'text-agro-earth',
+    accentClass: 'text-agro-earth-dark',
     description:
       'Interfaz accesible validada con usuarios reales de Pronisa en sesiones presenciales. La tecnología está al servicio de las personas, haciendo el mantenimiento agrícola comprensible para cualquiera.',
   },
@@ -49,10 +49,22 @@ export const phases = [
   },
 ] as const;
 
+export const socialAccounts = [
+  {
+    handle: 'ies_gsr',
+    url: 'https://www.instagram.com/ies_gsr/',
+    school: 'IES Germán Sánchez Ruipérez',
+  },
+  {
+    handle: 'elalonsodemadrigal',
+    url: 'https://www.instagram.com/elalonsodemadrigal/',
+    school: 'IES Alonso de Madrigal',
+  },
+] as const;
+
 export const socialFeedConfig = {
-  account: 'ies_gsr',
+  accounts: socialAccounts,
   hashtag: 'demeteria',
-  instagramUrl: 'https://www.instagram.com/ies_gsr/',
 } as const;
 
 /** Enlaces a publicaciones concretas (embed nativo Instagram). Opcional si usas widget. */
