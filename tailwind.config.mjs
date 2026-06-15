@@ -6,11 +6,13 @@ export default {
       colors: {
         'demeter-green': '#2D6A4F',
         'hydro-teal': '#0D9488',
+        'hydro-teal-dark': '#0A5F58',
         'agro-earth': '#92702A',
+        'agro-earth-dark': '#6B5420',
         'tech-slate': '#1E293B',
         mist: '#F0F7F4',
         surface: '#FFFFFF',
-        muted: '#64748B',
+        muted: '#55657A',
       },
       fontFamily: {
         sans: [

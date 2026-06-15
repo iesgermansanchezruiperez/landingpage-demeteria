@@ -1,0 +1,168 @@
+---
+// ZERO-JS EXCEPTION: third-party Instagram widget (Elfsight | Curator.io | SnapWidget)
+// Accounts: @ies_gsr + @elalonsodemadrigal | Hashtag filter: #demeteria (configure in provider panel)
+import { instagramPosts, socialFeedConfig } from '../../data/project-content';
+
+const WIDGET_ID = import.meta.env.PUBLIC_SOCIAL_WIDGET_ID ?? '';
+const WIDGET_PROVIDER = import.meta.env.PUBLIC_SOCIAL_WIDGET_PROVIDER ?? 'elfsight';
+
+const envPostUrls = [
+  import.meta.env.PUBLIC_INSTAGRAM_POST_URL,
+  ...(import.meta.env.PUBLIC_INSTAGRAM_POSTS?.split(',').map((s: string) => s.trim()) ?? []),
+].filter(Boolean) as string[];
+
+const curatedPosts = [
+  ...instagramPosts,
+  ...envPostUrls.map((permalink) => ({ permalink })),
+].filter(
+  (post, index, arr) => arr.findIndex((p) => p.permalink === post.permalink) === index,
+);
+
+const { accounts, hashtag } = socialFeedConfig;
+const linkClass =
+  'text-demeter-green font-medium underline underline-offset-2 decoration-demeter-green/40 hover:decoration-demeter-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hydro-teal focus-visible:ring-offset-2 rounded-sm';
+const hasWidget = Boolean(WIDGET_ID);
+const hasNativeEmbeds = curatedPosts.length > 0;
+---
+
+<section
+  id="redes-sociales"
+  class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10"
+  aria-labelledby="titulo-social"
+>
+  <header class="mb-6">
+    <h2 id="titulo-social" class="text-3xl sm:text-4xl font-bold text-tech-slate text-balance">
+      DemeterIA en Instagram
+    </h2>
+    <p class="mt-3 text-muted text-pretty">
+      Proyecto conjunto entre el IES Germán Sánchez Ruipérez y el IES Alonso de Madrigal.
+      Publicaciones de{' '}
+      {accounts.map((account, index) => (
+        <>
+          {index > 0 && (index === accounts.length - 1 ? ' y ' : ', ')}
+          <a href={account.url} class={linkClass} rel="noopener noreferrer" target="_blank">
+            @{account.handle}
+          </a>
+        </>
+      ))}
+      {' '}con{' '}
+      <span class="font-medium text-tech-slate">#{hashtag}</span>
+    </p>
+  </header>
+
+  <div
+    id="social-feed-widget"
+    class="min-h-[320px] rounded-xl bg-surface border border-gray-200/80 overflow-hidden"
+    aria-label="Publicaciones de Instagram del proyecto DemeterIA"
+    aria-live="polite"
+  >
+    {hasWidget ? (
+      WIDGET_PROVIDER === 'snapwidget' ? (
+        <>
+          {/* ZERO-JS EXCEPTION: SnapWidget iframe — filter @ies_gsr + #demeteria in panel */}
+          <iframe
+            src={`https://snapwidget.com/embed/${WIDGET_ID}`}
+            title="Feed de Instagram @ies_gsr — #demeteria"
+            class="w-full min-h-[400px] border-0"
+            allowtransparency="true"
+            scrolling="no"
+            loading="lazy"
+          />
+        </>
+      ) : WIDGET_PROVIDER === 'curator' ? (
+        <>
+          {/* ZERO-JS EXCEPTION: Curator.io — filter @ies_gsr + #demeteria in panel */}
+          <div id="curator-feed-default-feed-container" />
+          <script is:inline define:vars={{ feedId: WIDGET_ID }}>
+            (function () {
+              var i, e, d = document;
+              i = d.createElement('script');
+              i.async = 1;
+              i.src = 'https://cdn.curator.io/published/' + feedId + '.js';
+              e = d.getElementsByTagName('script')[0];
+              e.parentNode.insertBefore(i, e);
+            })();
+          </script>
+        </>
+      ) : (
+        <>
+          {/* ZERO-JS EXCEPTION: Elfsight (default) — filter @ies_gsr + #demeteria in panel */}
+          <div class={`elfsight-app-${WIDGET_ID}`} data-elfsight-app-lazy />
+          <script is:inline src="https://elfsightcdn.com/platform.js" async />
+        </>
+      )
+    ) : hasNativeEmbeds ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 sm:p-6 justify-items-center">
+        {curatedPosts.map((post) => (
+          <blockquote
+            class="instagram-media w-full max-w-[540px]"
+            data-instgrm-captioned
+            data-instgrm-permalink={`${post.permalink}?utm_source=ig_embed&utm_campaign=loading`}
+            data-instgrm-version="14"
+            style="background:#FFF; border:0; border-radius:12px; margin:0; max-width:540px; min-width:326px; padding:0; width:100%;"
+          >
+            <a
+              href={post.permalink}
+              rel="noopener noreferrer"
+              target="_blank"
+              class="block p-8 text-center text-muted hover:text-hydro-teal-dark motion-safe:transition-colors"
+            >
+              {post.label ?? 'Ver publicación en Instagram'}
+            </a>
+          </blockquote>
+        ))}
+      </div>
+    ) : (
+      <div class="p-8 sm:p-10 text-center">
+        <p class="text-muted leading-relaxed max-w-lg mx-auto text-pretty">
+          Sigue el avance del proyecto en Instagram. Publicamos novedades con el hashtag{' '}
+          <span class="font-medium text-tech-slate">#{hashtag}</span>.
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
+          {accounts.map((account) => (
+            <a
+              href={account.url}
+              class="inline-flex items-center justify-center rounded-lg bg-demeter-green px-5 py-2.5 text-sm font-semibold text-white hover:bg-demeter-green/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-demeter-green focus-visible:ring-offset-2 motion-safe:transition-colors"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              @{account.handle}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+
+  {hasNativeEmbeds && (
+    <script is:inline async src="https://www.instagram.com/embed.js" />
+  )}
+
+  <ul class="mt-4 flex flex-col sm:flex-row sm:flex-wrap gap-x-6 gap-y-2 text-sm text-muted" role="list">
+    {accounts.map((account) => (
+      <li>
+        <a href={account.url} class={linkClass} rel="noopener noreferrer" target="_blank">
+          @{account.handle}
+        </a>
+        <span class="text-muted"> — {account.school}</span>
+      </li>
+    ))}
+    <li>
+      <span class="font-medium text-tech-slate">#{hashtag}</span>
+    </li>
+  </ul>
+
+  <noscript>
+    <p class="mt-4 text-sm text-muted">
+      {accounts.map((account, index) => (
+        <>
+          {index > 0 && ' · '}
+          <a href={account.url} rel="noopener noreferrer" target="_blank">
+            @{account.handle}
+          </a>
+        </>
+      ))}
+      {' '}— busca #{hashtag}
+    </p>
+  </noscript>
+</section>

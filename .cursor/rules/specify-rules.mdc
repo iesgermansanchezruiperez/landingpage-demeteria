@@ -5,8 +5,8 @@ alwaysApply: true
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan:
-`specs/002-topbar-compliance/plan.md`
+`specs/013-info-social/plan.md`
 
-Active feature: Issue #12 — TopBar compliance + Hero (rama `feature/012-topbar-compliance`).
-Quickstart validation: `specs/002-topbar-compliance/quickstart.md`
+Active feature: Issue #13 — Secciones informativas y Widget de Instagram (rama `feature/013-info-social`).
+Quickstart validation: `specs/013-info-social/quickstart.md`
 <!-- SPECKIT END -->
