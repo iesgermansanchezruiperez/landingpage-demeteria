@@ -1,0 +1,120 @@
+---
+const legalMentionShort =
+  'Actuación financiada por el Ministerio de Educación, Formación Profesional y Deportes y cofinanciada por la Unión Europea (FSE+).';
+---
+
+<aside
+  aria-label="Financiación del proyecto CYL INNOVA FP"
+  class="bg-surface border-b border-gray-200 overflow-x-hidden"
+>
+  <div class="mx-auto max-w-6xl px-2 sm:px-4 py-1 sm:py-1.5">
+    <!-- Móvil / tablet: grid 5 columnas -->
+    <div class="md:hidden">
+      <div
+        class="grid grid-cols-5 gap-0.5 sm:gap-1 items-center justify-items-center"
+        role="list"
+        aria-label="Logotipos institucionales"
+      >
+        <!-- LOGO-UE -->
+        <div class="w-full max-w-14 h-6 sm:h-8 flex items-center justify-center shrink-0" role="listitem">
+          <svg class="h-full w-auto text-gray-300" viewBox="0 0 48 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="32" rx="2" fill="currentColor" opacity="0.35" />
+            <circle cx="24" cy="16" r="9" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
+            <circle cx="24" cy="7" r="1.5" fill="currentColor" opacity="0.7" />
+            <circle cx="31" cy="10" r="1.5" fill="currentColor" opacity="0.7" />
+            <circle cx="33" cy="18" r="1.5" fill="currentColor" opacity="0.7" />
+            <circle cx="28" cy="25" r="1.5" fill="currentColor" opacity="0.7" />
+            <circle cx="20" cy="25" r="1.5" fill="currentColor" opacity="0.7" />
+            <circle cx="15" cy="18" r="1.5" fill="currentColor" opacity="0.7" />
+            <circle cx="17" cy="10" r="1.5" fill="currentColor" opacity="0.7" />
+          </svg>
+          <span class="sr-only">Logotipo Unión Europea</span>
+        </div>
+        <!-- LOGO-MEFPD -->
+        <div class="w-full max-w-14 h-6 sm:h-8 flex items-center justify-center shrink-0" role="listitem">
+          <svg class="h-full w-auto text-gray-300" viewBox="0 0 48 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="32" rx="2" fill="currentColor" opacity="0.35" />
+            <rect x="8" y="10" width="32" height="12" rx="1" fill="currentColor" opacity="0.5" />
+            <text x="24" y="19" text-anchor="middle" fill="currentColor" font-size="5" opacity="0.8">MEFPD</text>
+          </svg>
+          <span class="sr-only">Logotipo Ministerio de Educación, Formación Profesional y Deportes</span>
+        </div>
+        <!-- LOGO-JCYL -->
+        <div class="w-full max-w-14 h-6 sm:h-8 flex items-center justify-center shrink-0" role="listitem">
+          <svg class="h-full w-auto text-gray-300" viewBox="0 0 48 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="32" rx="2" fill="currentColor" opacity="0.35" />
+            <rect x="14" y="6" width="20" height="20" rx="2" fill="currentColor" opacity="0.5" />
+            <path d="M24 10 L28 22 L20 22 Z" fill="currentColor" opacity="0.3" />
+          </svg>
+          <span class="sr-only">Logotipo Junta de Castilla y León</span>
+        </div>
+        <!-- LOGO-CYLINNOVA -->
+        <div class="w-full max-w-14 h-6 sm:h-8 flex items-center justify-center shrink-0" role="listitem">
+          <svg class="h-full w-auto text-gray-300" viewBox="0 0 48 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="32" rx="2" fill="currentColor" opacity="0.35" />
+            <text x="24" y="19" text-anchor="middle" fill="currentColor" font-size="5" font-weight="bold" opacity="0.8">INNOVA</text>
+          </svg>
+          <span class="sr-only">Logotipo programa CYL INNOVA FP</span>
+        </div>
+        <!-- LOGO-FSE -->
+        <div class="w-full max-w-14 h-6 sm:h-8 flex items-center justify-center shrink-0" role="listitem">
+          <svg class="h-full w-auto text-gray-300" viewBox="0 0 48 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="32" rx="2" fill="currentColor" opacity="0.35" />
+            <text x="24" y="19" text-anchor="middle" fill="currentColor" font-size="6" font-weight="bold" opacity="0.8">FSE+</text>
+          </svg>
+          <span class="sr-only">Logotipo Fondo Social Europeo Plus</span>
+        </div>
+      </div>
+      <p class="mt-0.5 text-center text-[10px] sm:text-xs text-muted leading-tight">
+        Cofinanciado por la Unión Europea
+      </p>
+      <p class="hidden sm:block mt-1 text-center text-[10px] text-muted/80 leading-snug">
+        {legalMentionShort}
+      </p>
+    </div>
+
+    <!-- Desktop: flex horizontal -->
+    <div class="hidden md:flex md:items-center md:justify-between md:gap-4">
+      <div class="flex items-center gap-3" role="list" aria-label="Logotipos institucionales">
+        <div class="h-10 w-14 flex items-center justify-center shrink-0" role="listitem">
+          <svg class="h-full w-auto text-gray-300" viewBox="0 0 48 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="32" rx="2" fill="currentColor" opacity="0.35" />
+            <circle cx="24" cy="16" r="9" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
+          </svg>
+          <span class="sr-only">Logotipo Unión Europea</span>
+        </div>
+        <div class="h-10 w-14 flex items-center justify-center shrink-0" role="listitem">
+          <svg class="h-full w-auto text-gray-300" viewBox="0 0 48 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="32" rx="2" fill="currentColor" opacity="0.35" />
+            <rect x="8" y="10" width="32" height="12" rx="1" fill="currentColor" opacity="0.5" />
+          </svg>
+          <span class="sr-only">Logotipo Ministerio de Educación, Formación Profesional y Deportes</span>
+        </div>
+        <div class="h-10 w-14 flex items-center justify-center shrink-0" role="listitem">
+          <svg class="h-full w-auto text-gray-300" viewBox="0 0 48 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="32" rx="2" fill="currentColor" opacity="0.35" />
+            <rect x="14" y="6" width="20" height="20" rx="2" fill="currentColor" opacity="0.5" />
+          </svg>
+          <span class="sr-only">Logotipo Junta de Castilla y León</span>
+        </div>
+        <div class="h-10 w-14 flex items-center justify-center shrink-0" role="listitem">
+          <svg class="h-full w-auto text-gray-300" viewBox="0 0 48 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="32" rx="2" fill="currentColor" opacity="0.35" />
+            <text x="24" y="19" text-anchor="middle" fill="currentColor" font-size="5" font-weight="bold" opacity="0.8">INNOVA</text>
+          </svg>
+          <span class="sr-only">Logotipo programa CYL INNOVA FP</span>
+        </div>
+        <div class="h-10 w-14 flex items-center justify-center shrink-0" role="listitem">
+          <svg class="h-full w-auto text-gray-300" viewBox="0 0 48 32" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="32" rx="2" fill="currentColor" opacity="0.35" />
+            <text x="24" y="19" text-anchor="middle" fill="currentColor" font-size="6" font-weight="bold" opacity="0.8">FSE+</text>
+          </svg>
+          <span class="sr-only">Logotipo Fondo Social Europeo Plus</span>
+        </div>
+      </div>
+      <p class="text-xs text-muted max-w-xl text-right leading-snug">
+        Cofinanciado por la Unión Europea
+      </p>
+    </div>
+  </div>
+</aside>

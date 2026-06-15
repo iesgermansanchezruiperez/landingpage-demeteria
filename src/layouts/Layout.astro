@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import TopBar from '../components/TopBar.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -33,6 +34,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'http://localhost
     >
       Saltar al contenido principal
     </a>
+    <TopBar />
     <Header />
     <main id="contenido-principal" class="flex-1 w-full">
       <slot />

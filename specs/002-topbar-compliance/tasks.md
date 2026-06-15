@@ -25,8 +25,8 @@ description: "Task list for Issue #12 — TopBar compliance + Hero"
 
 **Purpose**: Confirmar rama y contexto legal antes de codificar
 
-- [ ] T001 Confirmar rama activa `feature/012-topbar-compliance` con `git branch --show-current`
-- [ ] T002 [P] Revisar textos legales en `docs/Instrucciones CYL INNOVA FP .md` §5.1 y §5.3 y blueprints en `specs/002-topbar-compliance/plan.md`
+- [x] T001 Confirmar rama activa `feature/012-topbar-compliance` con `git branch --show-current`
+- [x] T002 [P] Revisar textos legales en `docs/Instrucciones CYL INNOVA FP .md` §5.1 y §5.3 y blueprints en `specs/002-topbar-compliance/plan.md`
 
 **Checkpoint**: Rama feature correcta; textos LEG-UE-LEMA y LEG-MENCION localizados
 
@@ -38,8 +38,8 @@ description: "Task list for Issue #12 — TopBar compliance + Hero"
 
 **⚠️ CRITICAL**: US1/US2 no pueden validarse sin TopBar base
 
-- [ ] T003 Create `src/components/TopBar.astro` skeleton with `<aside aria-label="Financiación del proyecto CYL INNOVA FP">`, `bg-surface`, `overflow-x-hidden` per `specs/002-topbar-compliance/plan.md`
-- [ ] T004 [P] Add mobile logo grid `grid grid-cols-5 gap-0.5` container with `role="list"` in `src/components/TopBar.astro` per `specs/002-topbar-compliance/contracts/topbar-layout.md`
+- [x] T003 Create `src/components/TopBar.astro` skeleton with `<aside aria-label="Financiación del proyecto CYL INNOVA FP">`, `bg-surface`, `overflow-x-hidden` per `specs/002-topbar-compliance/plan.md`
+- [x] T004 [P] Add mobile logo grid `grid grid-cols-5 gap-0.5` container with `role="list"` in `src/components/TopBar.astro` per `specs/002-topbar-compliance/contracts/topbar-layout.md`
 
 **Checkpoint**: TopBar renderizable (aunque logos vacíos); importable desde Layout
 
@@ -53,10 +53,10 @@ description: "Task list for Issue #12 — TopBar compliance + Hero"
 
 ### Implementation for User Story 1
 
-- [ ] T005 [P] [US1] Add 5 inline SVG placeholders (LOGO-UE, LOGO-MEFPD, LOGO-JCYL, LOGO-CYLINNOVA, LOGO-FSE) in `src/components/TopBar.astro` per `specs/002-topbar-compliance/plan.md`
-- [ ] T006 [US1] Add literal lema `Cofinanciado por la Unión Europea` in `src/components/TopBar.astro` with `text-[10px] sm:text-xs text-muted` classes
-- [ ] T007 [US1] Apply per-logo classes `max-w-14 h-6 sm:h-8 shrink-0` and `sr-only` labels in `src/components/TopBar.astro` per `specs/002-topbar-compliance/data-model.md`
-- [ ] T008 [US1] Validate TopBar height ≤ 72 px and above-the-fold at 320×568 per `specs/002-topbar-compliance/quickstart.md` §2
+- [x] T005 [P] [US1] Add 5 inline SVG placeholders (LOGO-UE, LOGO-MEFPD, LOGO-JCYL, LOGO-CYLINNOVA, LOGO-FSE) in `src/components/TopBar.astro` per `specs/002-topbar-compliance/plan.md`
+- [x] T006 [US1] Add literal lema `Cofinanciado por la Unión Europea` in `src/components/TopBar.astro` with `text-[10px] sm:text-xs text-muted` classes
+- [x] T007 [US1] Apply per-logo classes `max-w-14 h-6 sm:h-8 shrink-0` and `sr-only` labels in `src/components/TopBar.astro` per `specs/002-topbar-compliance/data-model.md`
+- [x] T008 [US1] Validate TopBar height ≤ 72 px and above-the-fold at 320×568 per `specs/002-topbar-compliance/quickstart.md` §2
 
 **Checkpoint**: SC-001, SC-002, SC-003 cumplidos
 
@@ -70,9 +70,9 @@ description: "Task list for Issue #12 — TopBar compliance + Hero"
 
 ### Implementation for User Story 2
 
-- [ ] T009 [US2] Import and render `TopBar` in `src/layouts/Layout.astro` before `Header` per `specs/002-topbar-compliance/plan.md`
-- [ ] T010 [US2] Verify `src/components/TopBar.astro` uses only neutral tokens (`bg-surface`, `text-muted`, `border-gray-200`) — no `demeter-green`/`hydro-teal` backgrounds
-- [ ] T011 [US2] Verify landmark order `aside → header → main → footer` in built HTML per `specs/002-topbar-compliance/contracts/html-semantics.md`
+- [x] T009 [US2] Import and render `TopBar` in `src/layouts/Layout.astro` before `Header` per `specs/002-topbar-compliance/plan.md`
+- [x] T010 [US2] Verify `src/components/TopBar.astro` uses only neutral tokens (`bg-surface`, `text-muted`, `border-gray-200`) — no `demeter-green`/`hydro-teal` backgrounds
+- [x] T011 [US2] Verify landmark order `aside → header → main → footer` in built HTML per `specs/002-topbar-compliance/contracts/html-semantics.md`
 
 **Checkpoint**: US2 acceptance scenarios 1–3 verificados
 
@@ -86,10 +86,10 @@ description: "Task list for Issue #12 — TopBar compliance + Hero"
 
 ### Implementation for User Story 3
 
-- [ ] T012 [P] [US3] Create `src/components/sections/Hero.astro` migrating hero `<section>` from `src/pages/index.astro` per `specs/002-topbar-compliance/plan.md` blueprint
-- [ ] T013 [US3] Refactor `src/pages/index.astro` to `import Hero` and render `<Layout><Hero /></Layout>` only
-- [ ] T014 [US3] Apply responsive padding `py-12 sm:py-16 lg:py-24` and Premium Agrotech tokens in `src/components/sections/Hero.astro`
-- [ ] T015 [US3] Verify single `h1` and no horizontal overflow at 320 px per `specs/002-topbar-compliance/quickstart.md` §4
+- [x] T012 [P] [US3] Create `src/components/sections/Hero.astro` migrating hero `<section>` from `src/pages/index.astro` per `specs/002-topbar-compliance/plan.md` blueprint
+- [x] T013 [US3] Refactor `src/pages/index.astro` to `import Hero` and render `<Layout><Hero /></Layout>` only
+- [x] T014 [US3] Apply responsive padding `py-12 sm:py-16 lg:py-24` and Premium Agrotech tokens in `src/components/sections/Hero.astro`
+- [x] T015 [US3] Verify single `h1` and no horizontal overflow at 320 px per `specs/002-topbar-compliance/quickstart.md` §4
 
 **Checkpoint**: SC-004 cumplido; constitución III (sección modular) satisfecha
 
@@ -103,9 +103,9 @@ description: "Task list for Issue #12 — TopBar compliance + Hero"
 
 ### Implementation for User Story 4
 
-- [ ] T016 [US4] Add LEG-MENCION full text block in `src/components/Footer.astro` inside `<section aria-label="Financiación del proyecto">` per `specs/002-topbar-compliance/plan.md`
-- [ ] T017 [P] [US4] Add `md:flex` desktop layout variant and `sm:block` abbreviated mention in `src/components/TopBar.astro` per `specs/002-topbar-compliance/plan.md`
-- [ ] T018 [US4] Verify legal text contrast ≥ 4.5:1 (`text-mist/70` on `bg-tech-slate` in Footer) per `specs/002-topbar-compliance/quickstart.md` §5
+- [x] T016 [US4] Add LEG-MENCION full text block in `src/components/Footer.astro` inside `<section aria-label="Financiación del proyecto">` per `specs/002-topbar-compliance/plan.md`
+- [x] T017 [P] [US4] Add `md:flex` desktop layout variant and `sm:block` abbreviated mention in `src/components/TopBar.astro` per `specs/002-topbar-compliance/plan.md`
+- [x] T018 [US4] Verify legal text contrast ≥ 4.5:1 (`text-mist/70` on `bg-tech-slate` in Footer) per `specs/002-topbar-compliance/quickstart.md` §5
 
 **Checkpoint**: FR-004 satisfecho; mención accesible sin JS
 
@@ -115,11 +115,11 @@ description: "Task list for Issue #12 — TopBar compliance + Hero"
 
 **Purpose**: Zero-JS, build, PR — pre-merge a `main`
 
-- [ ] T019 [P] Run Zero-JS checklist in `specs/002-topbar-compliance/contracts/zero-js-compliance.md` (`find dist -name '*.js'`, no `client:*`, no `<script>`)
-- [ ] T020 [P] Scan `src/` for prohibited patterns per `specs/002-topbar-compliance/contracts/zero-js-compliance.md`
-- [ ] T021 Run `npm run build` and `npm run preview` without errors on `feature/012-topbar-compliance`
-- [ ] T022 [P] Validate full quickstart.md checklist (§2–§7)
-- [ ] T023 Open Pull Request from `feature/012-topbar-compliance` → `main` (Issue #12); **no push directo a main**
+- [x] T019 [P] Run Zero-JS checklist in `specs/002-topbar-compliance/contracts/zero-js-compliance.md` (`find dist -name '*.js'`, no `client:*`, no `<script>`)
+- [x] T020 [P] Scan `src/` for prohibited patterns per `specs/002-topbar-compliance/contracts/zero-js-compliance.md`
+- [x] T021 Run `npm run build` and `npm run preview` without errors on `feature/012-topbar-compliance`
+- [x] T022 [P] Validate full quickstart.md checklist (§2–§7)
+- [x] T023 Open Pull Request from `feature/012-topbar-compliance` → `main` (Issue #12); **no push directo a main**
 
 ---
 
