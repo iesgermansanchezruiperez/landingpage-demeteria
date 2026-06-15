@@ -7,3 +7,5 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # PUBLIC_* se embeben en HTML (Astro); no son secretos — evita fallo del escáner
+  SECRETS_SCAN_OMIT_KEYS = "PUBLIC_SOCIAL_WIDGET_ID,PUBLIC_SOCIAL_WIDGET_PROVIDER"

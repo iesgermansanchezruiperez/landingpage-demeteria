@@ -42,5 +42,6 @@ Si aparece el bloque de fallback (botones @ies_gsr sin widget), la variable no s
 ## Seguridad
 
 - MUST NOT commitear `.env` con valores de producción.
-- `.env.example` MAY dejar valores vacíos como plantilla.
+- MUST NOT marcar variables `PUBLIC_*` como «Contains secret values» en Netlify (van en HTML público).
+- Si secret scanning falla el build: `SECRETS_SCAN_OMIT_KEYS` en `netlify.toml` o quitar flag secreto en panel.
 - Rotación de widget: actualizar solo en panel Netlify + redeploy.

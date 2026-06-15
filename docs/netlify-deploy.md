@@ -25,10 +25,16 @@ Guía operativa para el Issue #14. Configuración versionada en `netlify.toml`.
 
 **Site configuration → Environment variables** (scope: **Builds**):
 
-| Variable | Valor |
-|----------|-------|
-| `PUBLIC_SOCIAL_WIDGET_ID` | ID del widget Elfsight (ej. `dde513e0-b012-480b-957e-bfe4acb82acf`) |
-| `PUBLIC_SOCIAL_WIDGET_PROVIDER` | `elfsight` |
+| Variable | Valor | ¿Secreto? |
+|----------|-------|-----------|
+| `PUBLIC_SOCIAL_WIDGET_ID` | ID del widget Elfsight | **No** — va en el HTML público |
+| `PUBLIC_SOCIAL_WIDGET_PROVIDER` | `elfsight` | **No** — nombre del proveedor, aparece en el código |
+
+> **Importante:** NO marques estas variables con «Contains secret values» en Netlify.
+> Si las marcas como secretas, el escáner de secretos falla el build porque `elfsight` y el widget ID
+> aparecen a propósito en `.env.example`, `SocialFeed.astro` y el HTML generado.
+
+El `netlify.toml` incluye `SECRETS_SCAN_OMIT_KEYS` por si alguna quedó marcada como secreta.
 
 > Sin estas variables, la sección Instagram muestra solo el fallback (botones a perfiles).
 
